@@ -1,13 +1,15 @@
 # Utilização
 
+Vá para o site https://trenchcompendium.netlify.app/ e crie seu warband. Depois baixe ele em JSON e utilize esse aplicativo para tranformar em PDF.
+Com o aplicativo já instalado e aberto, selecione o arquivo JSON do seu warband, escolha as cores de fundo das habilidades dos personagens e clique em Gerar Arquivo.
+
 ## Windows x64
 
-Baixe o .exe e execute ele. Com o aplicativo já instalado e aberto, selecione o arquivo JSON do seu warband, escolha as cores de fundo das habilidades dos personagem em Gerar Arquivo.
+Baixe o .exe e execute ele.
 
 ## Outras plataformas
 
-Se quiser, pode clonar o respositório e gerar ai na sua plataforma.
-Utilizei o electron forge para buildar, então acredito que se instalar os pacotes do node o rodar o seguinte comando deve funcionar:
+Sem arquivos compilados por enquanto. Se quiser, pode clonar o respositório e gerar ai na sua plataforma. Utilizei o electron forge para buildar, então acredito que se instalar os pacotes do node o rodar o seguinte comando deve funcionar:
 
 > npm run make
 
