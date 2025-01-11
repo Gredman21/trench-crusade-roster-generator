@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+input {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+button {
+    font-size: 20px;
+}
+
+#font-size,
+#action-bg-color,
+#risky-bg-color,
+#goetic-bg-color,
+button {
+    width: 150px;
+}

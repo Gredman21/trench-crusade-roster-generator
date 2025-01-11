@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trench Crusade JSON to PDF</title>
+    <link rel="stylesheet" href="view.css">
+</head>
+<body>
+    <form id="pdf-form" onsubmit="handleSubmit()">
+        <label for="warband-file">Arquivo do warband</label>
+        <br/>
+        <input type="file" id="warband-file" required="required" name="warband-file" accept="application/JSON"/>
+        <br/>
+
+        <label for="font-size">Tamanho da fonte</label>
+        <br/>
+        <input type="text" id="font-size" value="15" required="required" name="font-size"/>
+        <br/>
+
+        <label for="action-bg-color">Cor de fundo ACTION (em hexadecimal)</label>
+        <br/>
+        <input type="color" id="action-bg-color" value="#de551f" required="required" name="action-bg-color"/>
+        <br/>
+
+        <label for="risky-bg-color">Cor de fundo RISKY ACTION (em hexadecimal)</label>
+        <br/>
+        <input type="color" id="risky-bg-color" value="#0F4C81" required="required" name="risky-bg-color"/>
+        <br/>
+
+        <label for="goetic-bg-color">Cor de fundo GOETIC POWER (em hexadecimal)</label>
+        <br/>
+        <input type="color" id="goetic-bg-color" value="#105941" required="required" name="goetic-bg-color"/>
+        <br/>
+
+        <br/>
+        <button id="gerar-btn" type="submit">Gerar Arquivo</button>
+    </form>
+
+    <script>
+        async function handleSubmit() {
+
+            event.preventDefault()
+
+            try {
+                const file = document.getElementById("warband-file").files[0]
+                var reader = new FileReader()
+
+                reader.onload = async () => {
+                    console.log('foi async')
+                    const conteudoArquivo = reader.result
+
+                    const conteudo = {
+                        "warbandFile": conteudoArquivo,
+                        "warbandName": file.name,
+                        "fontSize": document.getElementById('font-size').value,
+                        "actionBgColor": document.getElementById('action-bg-color').value,
+                        "riskyActionBgColor": document.getElementById('risky-bg-color').value,
+                        "goeticPowerBgColor": document.getElementById('goetic-bg-color').value
+                    }
+
+                    const resposta = await electronAPI.gerarPDF(conteudo)
+
+                    if(resposta.erro) {
+                        alert(resposta.erro)
+                        return false
+                    }
+
+                    document.getElementById('pdf-form').reset()
+                    alert(resposta)
+
+                    electronAPI.fecharApp()
+                    return true
+                }
+
+                reader.onerror = (error) => {
+                    alert('erro ao ler o arquivo: ' + error)
+                    return false
+                }
+
+                reader.readAsText(file)
+
+            } catch (error) {
+                alert('erro: ' + error)
+                return false
+            }
+        }
+    </script>
+</body>
+</html>

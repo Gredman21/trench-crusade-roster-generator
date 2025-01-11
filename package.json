@@ -1,0 +1,30 @@
+{
+  "name": "trench-crusade-pdf-ui",
+  "version": "0.1.6",
+  "preferGlobal": true,
+  "description": "Transforma o warband exportado de Trench Crusade de JSON para PDF",
+  "main": "create-file.js",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "minimist": "^1.2.8",
+    "wkhtmltopdf": "^0.4.0"
+  },
+  "author": "Lucas Rodrigues de Matos",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.6.0",
+    "@electron-forge/maker-deb": "^7.6.0",
+    "@electron-forge/maker-rpm": "^7.6.0",
+    "@electron-forge/maker-squirrel": "^7.6.0",
+    "@electron-forge/maker-zip": "^7.6.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.6.0",
+    "@electron-forge/plugin-fuses": "^7.6.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^33.2.1"
+  }
+}
