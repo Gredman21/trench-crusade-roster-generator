@@ -1,6 +1,6 @@
 {
   "name": "trench-crusade-pdf-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "preferGlobal": true,
   "description": "Transforma o warband exportado de Trench Crusade de JSON para PDF",
   "main": "create-file.js",
