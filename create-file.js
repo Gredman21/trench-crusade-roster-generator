@@ -31,7 +31,7 @@ ipcMain.handle('gerar-pdf', async (event, data) => {
             createFile(data)
             resolve('PDF criado com sucesso')
         } catch(e) {
-            reject('erro ao criar PDF: ' + e.message)
+            reject('erro ao criar PDF: ' + e.stack)
         }
     })
 })
@@ -382,7 +382,7 @@ function createModel(member) {
                 abilities.push(addon)
             }
             else {
-                console.warn('característica não encontrada no addons: ' + addon)
+                console.warn('característica não encontrada no addons: ' + JSON.stringify(addon))
                 abilities.push(addon)
             }
         }
@@ -411,7 +411,7 @@ function createModel(member) {
                 abilities.push(addon)
             }
             else {
-                console.warn('característica não encontrada no addons: ' + addon)
+                console.warn('característica não encontrada no addons: ' + JSON.stringify(addon))
                 abilities.push(addon)
             }
         }
@@ -449,7 +449,7 @@ function createModel(member) {
         for(let i = 0; i < armours.length; i++) {
             const armour = armours[i]
             modelHtml += `<div class="armour">
-                    <span>${armour.Object.Name}: </span>${armour.Object.Description[0].SubContent[0].Content}
+                    <span>${armour.Object.Name}: </span>${armour.Object.Description[0].Content}
                 </div>`
         }
 
@@ -563,9 +563,14 @@ function createDivision(text) {
 }
 
 function getAddonById(id) {
-    return addonsJson.find(function (addon) {
-        return addon['id'] === id;
-    }) || null;
+    for(let i = 0; i < addonsJson.length; i++) {
+        if(addonsJson[i].id === id) {
+            console.log("achou")
+            return addonsJson[i]
+        }
+    }
+
+    return null
 }
 
 function getUpgradeById(id) {
